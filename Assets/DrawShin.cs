@@ -21,6 +21,6 @@ public class DrawShin : MonoBehaviour {
         positions[1] = ankle.position;
 
        liney.GetComponent<LineRenderer>().SetPositions(positions);
-
+       transform.position = (knee.position + ankle.position) / 2;
     }
 }
