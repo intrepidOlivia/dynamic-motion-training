@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraLocation : MonoBehaviour {
 
+    public Camera thirdPersonCamera;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -13,4 +15,10 @@ public class CameraLocation : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void moveCameraTo(GameObject location) {
+        Debug.Log("Moving camera to:" + location.transform.localPosition);
+        thirdPersonCamera.transform.position = location.transform.localPosition;
+        thirdPersonCamera.transform.rotation = location.transform.rotation;
+    }
 }
