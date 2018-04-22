@@ -13,7 +13,7 @@ We developed our project in Unity using the SteamVR plugin and using an HTC Vive
 ## Challenges we ran into
 Design challenges included configuring a scene with multiple trackers to enable tracking of multiple body parts, as well as representing user movement with a humanoid avatar.
 
-##Resources used:
+## Resources used:
 [Vive IK Demo](https://github.com/JamesBear/vive_ik_demo)
 
 [Robot Kyle](https://assetstore.unity.com/packages/3d/characters/robots/space-robot-kyle-4696)
