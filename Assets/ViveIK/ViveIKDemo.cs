@@ -169,11 +169,13 @@ public class ViveIKDemo : MonoBehaviour {
     }
 
     public GameObject instructions;
+    public GameObject exerciseInstructions;
 
     void StartIK()
     {
         // Make instructions go away
         instructions.SetActive(false);
+        exerciseInstructions.SetActive(true);
 
         int headIndex = -1;
         
