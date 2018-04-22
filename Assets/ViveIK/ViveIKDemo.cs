@@ -190,8 +190,9 @@ public class ViveIKDemo : MonoBehaviour {
 
 
         headIndex = ikList.FindIndex(item => item.bendNormalStrategy == ThreePointIK.BendNormalStrategy.head);
-        if (headIndex >= 0)
-            Swap(ikList, 0, headIndex);
+        //
+        //if (headIndex >= 0)
+        //    Swap(ikList, 0, headIndex);
     }
 
 
