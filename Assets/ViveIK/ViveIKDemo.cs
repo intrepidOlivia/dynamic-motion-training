@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Valve.VR;
 
 /// <summary>
 /// A tracker is 'bound' to one foot, then its pose(position and rotation) can be 
@@ -266,6 +267,20 @@ public class ViveIKDemo : MonoBehaviour {
         list[indexB] = temp;
     }
 
+
+    private int getIndexForSerialNumber(string serial_to_find)
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            string serial_number = SteamVR.instance.GetStringProperty(ETrackedDeviceProperty.Prop_SerialNumber_String, (uint)i);
+            if (serial_number == serial_to_find)
+            {
+                return i;
+            }
+        }
+        return 0;
+    }
+
     bool AssignTrackers()
     {
         trackers.Clear();
@@ -280,7 +295,8 @@ public class ViveIKDemo : MonoBehaviour {
                 if (deviceClass == Valve.VR.ETrackedDeviceClass.Controller || deviceClass == Valve.VR.ETrackedDeviceClass.GenericTracker)
                 {
                     devices.Add(new KeyValuePair<int, Vector3>(i, GetPose(i).pos));
-                    Debug.Log((SteamVR_TrackedObject.EIndex)i + ", type = " + deviceClass);
+                    //Debug.Log((SteamVR_TrackedObject.EIndex)i + ", type = " + deviceClass);
+                    Debug.Log("device " + i + " has position of " + GetPose(i).pos);
                 }
                 else
                 {
@@ -292,8 +308,24 @@ public class ViveIKDemo : MonoBehaviour {
         MyLog("device count = " + devices.Count);
 
         devices.Sort((a, b) => a.Value.y.CompareTo(b.Value.y));
-               
-        if (devices.Count == 5)
+        // Debug.Log("Sorted devices:"); Debug.Log(devices);
+
+        // bind to serial numbers
+        const bool bind_to_serial_numbers = true;
+        if (bind_to_serial_numbers)
+        {
+            trackers[TrackerRole.FootRight] = getIndexForSerialNumber("LHR-1EA69A06");
+            trackers[TrackerRole.FootLeft] = getIndexForSerialNumber("LHR-1890594A");
+
+            trackers[TrackerRole.Torso] = getIndexForSerialNumber("LHR-FFDB3D40");
+
+            trackers[TrackerRole.HandRight] = getIndexForSerialNumber("LHR-F7CF7B44");
+            rightHandTarget = deviceMarkerDict[trackers[TrackerRole.HandRight]];
+
+            trackers[TrackerRole.HandLeft] = getIndexForSerialNumber("LHR-FFF15B47");
+            leftHandTarget = deviceMarkerDict[trackers[TrackerRole.HandLeft]];
+        }
+        else if (devices.Count == 5)
         {
             if (devices[0].Value.x < 0f)
                 Swap(devices, 0, 1);
