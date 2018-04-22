@@ -42,7 +42,7 @@ public class CameraLocation : MonoBehaviour {
     }
 
     private void rotateLeft() {
-        if (degrees > 10) {
+        if (degrees > 13) {
             isRotatingLeft = false;
             degrees = 0;
             return;
@@ -51,7 +51,7 @@ public class CameraLocation : MonoBehaviour {
     }
 
     private void rotateRight() {
-        if (degrees > 10) {
+        if (degrees > 13) {
             isRotatingRight = false;
             degrees = 0;
             return;
