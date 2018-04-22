@@ -167,9 +167,12 @@ public class ViveIKDemo : MonoBehaviour {
         transform.localScale = initModelState.modelScale*ratio;
     }
 
+    public GameObject instructions;
 
     void StartIK()
     {
+        // Make instructions go away
+        instructions.SetActive(false);
 
         int headIndex = -1;
         
