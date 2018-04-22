@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/splitLunge-instructionScene.unity
+    guid: 31bf4583996364f8a83e6575fe4d1cd3
+  - enabled: 1
+    path: Assets/Scenes/example-scene-1.unity
+    guid: c7a601276379746adbd55484b3a0f80b
