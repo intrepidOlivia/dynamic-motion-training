@@ -15,6 +15,6 @@ public class sceneTransition : MonoBehaviour {
 	}
 
     public void Transition() {
-        Initiate.Fade("example-scene-1", new Color(0, 0, 0), 1.0f);
+        Initiate.Fade("example-scene-1", new Color(1, 1, 1), 1.0f);
     }
 }
